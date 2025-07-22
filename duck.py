@@ -184,7 +184,6 @@ class ConfigManager:
         Display.print_status("Configuration saved", "success")
 
 class DiscordAPI:
-
     BASE_URL = "https://discord.com/api/v9"
     POMELO_ENDPOINT = f"{BASE_URL}/users/@me/pomelo-attempt"
     USER_ENDPOINT = f"{BASE_URL}/users/@me"
@@ -278,7 +277,6 @@ class DiscordAPI:
             return None
 
 class UsernameGenerator:
-
     def __init__(self, config: Configuration):
         self.config = config
         self.character_pool = self._build_character_pool()
@@ -307,7 +305,6 @@ class UsernameGenerator:
         return [self.generate(length) for _ in range(count)]
 
 class ResultManager:
-
     def __init__(self, output_file: Path = Path("available_usernames.txt")):
         self.output_file = output_file
         self.available_usernames: List[str] = []
@@ -329,7 +326,6 @@ class ResultManager:
         }
 
 class WebhookNotifier:
-
     def __init__(self, webhook_url: str):
         self.webhook_url = webhook_url
         self.enabled = bool(webhook_url)
@@ -344,7 +340,7 @@ class WebhookNotifier:
                 "title": f"Username Available: {username}",
                 "color": 0x00ff00,
                 "timestamp": datetime.utcnow().isoformat(),
-                "footer": {"text": "DUCK v2.0"}
+                "footer": {"text": "DUCK v1.0"}
             }]
         }
 
@@ -357,7 +353,6 @@ class WebhookNotifier:
             Display.print_status(f"Webhook failed: {error}", "error")
 
 class UsernameChecker:
-
     def __init__(self):
         self.config_manager = ConfigManager()
         self.config: Optional[Configuration] = None
@@ -480,7 +475,6 @@ class UsernameChecker:
 async def main():
     checker = UsernameChecker()
     await checker.run()
-
 if __name__ == "__main__":
     try:
         asyncio.run(main())
