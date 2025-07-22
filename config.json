@@ -1,0 +1,9 @@
+{
+  "discord_token": "your_token_here",
+  "request_delay": 1.0,
+  "enable_letters": true,
+  "enable_numbers": true,
+  "enable_symbols": false,
+  "webhook_url": "",
+  "multi_token_mode": false
+}
